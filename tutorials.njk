@@ -1,0 +1,75 @@
+---
+pagination:
+    data: contentful-tutorial
+    size: 1
+    alias: tutorial
+    addAllPagesToCollections: true
+permalink: "{{ tutorial.url | slug }}/"
+tags: "page"
+layout: tutorial.njk
+eleventyComputed:
+  title: "{{ tutorial.title }}"
+
+---
+
+  <article class="flex flex-wrap flex-nowrap-ns items-start justify-around relative mw9 center mt6">
+    <div class="mw7 mt6-ns basis-60-ns">
+      <header class="mb6 mb7-ns">
+        <h1 class="ma0 heading-level-2">{{ tutorial.title | widont | safe }}</h1>
+      </header>
+
+      <div class="f7 lh-copy nested-img nested-links nested-code nested-headlines nested-copy-letter-spacing">
+        <div class="bg-dragonfruit-wash br2 ba b--dragonfruit pv3 ph5 mv5 measure">
+          <p class="ma0">{{ tutorial.prerequisite | widont | safe }}</p>
+        </div>
+        {{ tutorial.content | markdown | safe }}
+      </div>
+
+      <div class="f7 flex flex-wrap mv6">
+        {% for tag in tutorial.tags %}
+          <a class="link mr3 mb3 bg-dragonfruit-wash br2 dragonfruit hover-dragonfruit-light fw6 pv1 ph2" href="/?tag={{tag.fields.name}}">
+            {{tag.fields.name}}
+          </a>
+        {% endfor %}
+      </div>
+
+      <div class="mv6">
+        <div class="nested-links">
+          <p>{{ tutorial.date | readableDate }}</p>
+          <p class="fw6">by {{ tutorial.authors | getValues }}</p>
+        </div>
+
+          <div class="sharing">
+            <p class="f8">Share article</p>
+            <ul class="list ma0 pa0 flex items-center">
+              <li class="mr5">
+                <a class="db link eggplant hover-dragonfruit-light" href="http://www.twitter.com/share?url={{metadata.url}}{{ tutorial.url | url }}" target="_blank">
+                  <svg class="w2 h2"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 18"><path fill="currentColor" d="M6.706 17.495c7.983 0 12.348-6.615 12.348-12.348 0-.189 0-.378-.009-.558a8.891 8.891 0 002.17-2.25 8.808 8.808 0 01-2.494.684A4.337 4.337 0 0020.63.62a8.788 8.788 0 01-2.754 1.053A4.319 4.319 0 0014.707.305a4.34 4.34 0 00-4.338 4.338c0 .342.036.675.117.99A12.311 12.311 0 011.54 1.097a4.353 4.353 0 00-.585 2.178 4.32 4.32 0 001.935 3.61 4.263 4.263 0 01-1.962-.54v.053a4.345 4.345 0 003.483 4.257 4.326 4.326 0 01-1.962.072 4.333 4.333 0 004.05 3.015 8.724 8.724 0 01-6.426 1.791 12.092 12.092 0 006.633 1.962z"/></svg>
+                </a>
+              </li>
+              <li class="mr5">
+                <a class="db link eggplant hover-dragonfruit-light" href="https://www.facebook.com/sharer/sharer.php?u={{metadata.url}}{{ tutorial.url | url }}" target="_blank">
+                  <svg class="w2 h2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 36 36"><path fill="currentColor" d="M36 18c0-9.941-8.059-18-18-18S0 8.059 0 18c0 8.984 6.582 16.431 15.188 17.781V23.203h-4.57V18h4.57v-3.966c0-4.51 2.687-7.003 6.798-7.003 1.97 0 4.03.352 4.03.352v4.43h-2.27c-2.236 0-2.933 1.387-2.933 2.81V18h4.992l-.798 5.203h-4.195v12.578C29.419 34.431 36 26.984 36 18z"/><path fill="#fff" d="M25.007 23.203L25.805 18h-4.992v-3.376c0-1.424.697-2.812 2.933-2.812h2.27v-4.43s-2.06-.35-4.03-.35c-4.111 0-6.799 2.491-6.799 7.002V18h-4.57v5.203h4.57v12.578a18.132 18.132 0 005.626 0V23.203h4.194z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a class="db link eggplant hover-dragonfruit-light" href="https://www.linkedin.com/sharing/share-offsite/?url={{metadata.url}}{{ tutorial.url | url }}" target="_blank">
+                <svg class="w2 h2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25"><path fill="currentColor" d="M22.958 0H1.83C.828 0 0 .809 0 1.791v21.206c0 .982.828 1.791 1.83 1.791h21.128c1.002 0 1.83-.809 1.83-1.791V1.79C24.788.81 23.96 0 22.958 0zm-15.6 21.129h-3.68V9.284h3.68v11.845zM5.507 7.685a2.145 2.145 0 01-2.137-2.138c0-1.175.943-2.138 2.137-2.138 1.175 0 2.138.963 2.138 2.138a2.145 2.145 0 01-2.138 2.138zm15.62 13.444H17.45v-5.76c0-1.367-.02-3.139-1.907-3.139-1.907 0-2.195 1.503-2.195 3.043v5.856h-3.68V9.284h3.525V10.9h.058c.482-.924 1.695-1.906 3.486-1.906 3.718 0 4.41 2.446 4.41 5.643v6.49h-.018z"/></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <aside class="sticky measure mt6 mt7-l top-2 bg-snow-light ba b--smoke-light ml6-m ml7-l pa4 br2 nested-copy-seperator nested-code basis-40-ns">
+      <a class="inline-flex bg-dragonfruit white items-center fw6 br2 pv3 ph4 justify-center link" href="{{ tutorial.projectRepo }}">
+        {% include "partials/fork-logo.njk" %}
+        Clone the project repository
+      </a>
+
+      <header class="mt5">
+        <h2 class="bb b--smoke f4 fw5 ma0">Contents</h2>
+      </header>
+      {{ tutorial.content | markdown | toc | safe }}
+    </aside>
+  </article>

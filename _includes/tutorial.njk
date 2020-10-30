@@ -1,0 +1,14 @@
+{% from "partials/channels-logo.njk" import channelsLogo %}
+{% from "partials/beams-logo.njk" import beamsLogo %}
+
+{% set bodyClasses = "flex flex-column flex-row-l min-vh-100" %}
+{% extends "base.njk" %}
+
+{% block container %}
+  <div class="flex-grow-1">
+    {% include "partials/home-nav.njk" %}
+
+    {{ content | safe }}
+
+  </div>
+{% endblock %}
