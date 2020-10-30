@@ -1,0 +1,19 @@
+{
+  "name": "pusher-tutorials",
+  "version": "1.0.0",
+  "description": "Pusher Tutorials an 11ty generated static site",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pusher/tutorials.git"
+  },
+  "author": "Jon Heslop <jon@jonheslop.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pusher/tutorials/issues"
+  },
+  "homepage": "https://github.com/pusher/tutorials#readme"
+}
