@@ -1,2 +1,3 @@
-# tutorials
-Pusher Tutorials - 11ty static site using Contentful
+# Pusher tutorials
+
+Pusher tutorials - 11ty static site using Contentful
