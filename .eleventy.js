@@ -1,3 +1,4 @@
+require("dotenv").config();
 const marked = require("marked");
 const pluginTOC = require("eleventy-plugin-toc");
 
