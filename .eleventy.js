@@ -11,9 +11,11 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("css");
 
   eleventyConfig.addFilter("widont", (string) => {
-    return string.split(" ").length > 2
-      ? string.replace(/\s([^\s<]+)\s*$/, "&nbsp;$1")
-      : string;
+    if (string) {
+      return string.split(" ").length > 2
+        ? string.replace(/\s([^\s<]+)\s*$/, "&nbsp;$1")
+        : string;
+    }
   });
 
   eleventyConfig.addFilter("markdown", (content) => {
