@@ -3,18 +3,37 @@ const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
 });
-// This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
+
+// Contentful gives 100 entries at a time, we have more than that so have to get all of them
 
 module.exports = async () => {
-  return client
-    .getEntries({ content_type: "post", order: "sys.createdAt" })
-    .then(function (response) {
-      console.log(">>>", response.items[response.items.length - 1]);
-      const tutorials = response.items.map(function (tutorials) {
+  // find out how many we have in total
+  const { total } = await client.getEntries({
+    content_type: "post",
+    limit: 1,
+  });
+
+  // Make x requests to Contentful for each batch of entries
+  const arrayOfGetEntriesPromises = [...Array(Math.ceil(total / 100))].map(
+    async (_, i) => {
+      const entries = await client.getEntries({
+        content_type: "post",
+        order: "sys.createdAt",
+        skip: 100 * i,
+      });
+
+      return entries.items.map((tutorials) => {
         tutorials.fields.date = new Date(tutorials.sys.updatedAt);
         return tutorials.fields;
       });
-      return tutorials;
-    })
-    .catch(console.error);
+    }
+  );
+
+  const arrayOfEntriesBatches = await Promise.all(arrayOfGetEntriesPromises);
+
+  // Transform [[{...}, {...}], [{...}, {...}]]
+  // to [{...}, {...}, {...}, {...}]
+  const allTutorials = arrayOfEntriesBatches.reduce((a, b) => a.concat(b), []);
+
+  return allTutorials;
 };
