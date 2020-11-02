@@ -19,8 +19,8 @@ eleventyComputed:
       </header>
 
       <div class="f7 lh-copy nested-img nested-links nested-code nested-headlines nested-copy-letter-spacing">
-        <div class="bg-dragonfruit-wash br2 ba b--dragonfruit pv3 ph5 mv5 measure">
-          <p class="ma0">{{ tutorial.prerequisite | widont | safe }}</p>
+        <div class="dragonfruit measure bl bw2 b--dragonfruit pl5">
+          <p class="ma0 fw6">{{ tutorial.prerequisite | widont | safe }}</p>
         </div>
         {{ tutorial.content | markdown | safe }}
       </div>
