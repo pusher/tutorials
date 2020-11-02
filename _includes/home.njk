@@ -14,62 +14,18 @@
       <div class="f5 f4-ns measure">
         {{ super() }}
       </div>
-      
-      <div class="g2x-ns gg3 mv6">
-        <div class="pa5 br2 ba b--smoke-light flex flex-column justify-between items-start mb5 mb0-ns">
-          {{ channelsLogo("2.5rem") }}
-          <p class="measure f5 mb5">{{ "Build realtime features in your web and mobile apps with our hosted pub/sub messaging API." | widont | safe }}</p>
-          <ul class="list ma0 pa0 w-100">
-            <li class="mb5 f4">
-              <a href="/channels/getting-started" class="db link eggplant hover-dragonfruit bg-snow-light hover-bg-snow br2 pr5 flex items-center">
-                {% include "partials/docs-icon.njk" %}
-                <span class="mr-auto">Getting started</span>
-                {% include "partials/caret-right.njk" %}
-              </a>
-            </li>
-            <li class="mb5 f4">
-              <a href="/channels/getting-started" class="db link eggplant hover-dragonfruit bg-snow-light hover-bg-snow br2 pr5 flex items-center">
-                {% include "partials/docs-icon.njk" %}
-                <span class="mr-auto">Client API</span>
-                {% include "partials/caret-right.njk" %}
-              </a>
-            </li>
-            <li class="f4">
-              <a href="/channels/getting-started" class="db link eggplant hover-dragonfruit bg-snow-light hover-bg-snow br2 pr5 flex items-center">
-                {% include "partials/docs-icon.njk" %}
-                <span class="mr-auto">Sever API</span>
-                {% include "partials/caret-right.njk" %}
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="pa5 br2 ba b--smoke-light flex flex-column justify-between items-start">
-          <span class="relative" style="top: -.1333rem">{{ beamsLogo("2.75rem") }}</span>
-          <p class="measure f5 mb5">{{ "Send mobile push notifications to iOS, Android apps and to web browsers, with our developer-friendly API and SDKs." | widont | safe }}</p>
-          <ul class="list ma0 pa0 w-100">
-            <li class="mb5 f4">
-              <a href="/channels/getting-started" class="db link eggplant hover-dragonfruit bg-snow-light hover-bg-snow br2 pr5 flex items-center">
-                {% include "partials/docs-icon.njk" %}
-                <span class="mr-auto">Getting started</span>
-                {% include "partials/caret-right.njk" %}
-              </a>
-            </li>
-            <li class="mb5 f4">
-              <a href="/channels/getting-started" class="db link eggplant hover-dragonfruit bg-snow-light hover-bg-snow br2 pr5 flex items-center">
-                {% include "partials/docs-icon.njk" %}
-                <span class="mr-auto">Client API</span>
-                {% include "partials/caret-right.njk" %}
-              </a>
-            </li>
-            <li class="f4">
-              <a href="/channels/getting-started" class="db link eggplant hover-dragonfruit bg-snow-light hover-bg-snow br2 pr5 flex items-center">
-                {% include "partials/docs-icon.njk" %}
-                <span class="mr-auto">Sever API</span>
-                {% include "partials/caret-right.njk" %}
-              </a>
-            </li>
-          </ul>
-        </div>
+
+      <div class="g3x-ns gg3 mv6">
+        {%- for tutorial in collections.tutorials -%}
+          <article class="flex flex-column">
+            <a href="{{ tutorial.url }}" class="link eggplant hover-dragonfruit-light flex flex-column justify-between flex-grow-1">
+              <h2 class="ma0 heading-level-3">{{ tutorial.data.title }}</h2>
+              <p>{{ tutorial.data.description }}</p>
+
+              <p class="dragonfruit-light fw6 mt-auto">Read more</p>
+            </a>
+          </article>
+        {%- endfor -%}
       </div>
     </section>
   </div>
