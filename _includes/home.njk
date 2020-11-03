@@ -17,12 +17,12 @@
 
       <div class="g3x-ns gg3 mv6">
         {%- for tutorial in collections.tutorials -%}
-          <article class="flex flex-column bg-snow-light br2 pa4">
+          <article class="flex flex-column ba b--transparent hover-b--smoke br2 pa4 grow">
             <a href="{{ tutorial.url }}" class="link eggplant hover-dragonfruit-light flex flex-column justify-between flex-grow-1">
               <h2 class="ma0 heading-level-3">{{ tutorial.data.title }}</h2>
               <p>{{ tutorial.data.description }}</p>
 
-              <p class="dragonfruit-light fw6 mt-auto mb0">Learn more &raquo;</p>
+              <p class="dragonfruit fw6 mt-auto mb0">Learn more &raquo;</p>
             </a>
           </article>
         {%- endfor -%}
