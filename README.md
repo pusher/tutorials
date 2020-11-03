@@ -6,6 +6,13 @@ Hosted on [Vercel], deploys automatically when changes are made to `main` branch
 
 This is going to replace the currently live [pusher.com/tutorials](https://pusher.com/tutorials) which lives here [pusher/elements-web](https://github.com/pusher/elements-web) and isn’t being maintained anymore.
 
+## Todo
+
+- [ ] Tags
+- [ ] Search
+- [ ] Syntax highlighting
+- [ ] Style properly, efficiently and use PurgeCSS
+
 [11ty]: https://11ty.io/
 [contentful]: https://contentful.com/
 [vercel]: https://vercel.com/
