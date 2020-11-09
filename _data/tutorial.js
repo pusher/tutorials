@@ -19,12 +19,14 @@ module.exports = async () => {
     pendingGetEntries.push(async () => {
       const entries = await client.getEntries({
         content_type: "post",
-        order: "sys.createdAt",
+        order: "-fields.reviewDate",
         skip: fetched,
       });
 
       return entries.items.map((tutorials) => {
-        tutorials.fields.date = new Date(tutorials.sys.updatedAt);
+        tutorials.fields.tags = tutorials.fields.tags.map(
+          (tag) => tag.fields.name
+        );
         return tutorials.fields;
       });
     });
