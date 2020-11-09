@@ -1,3 +1,4 @@
+
 {% from "partials/channels-logo.njk" import channelsLogo %}
 {% from "partials/beams-logo.njk" import beamsLogo %}
 
@@ -9,14 +10,10 @@
     {% include "partials/home-nav.njk" %}
     <section class="pa5 mw9 center">
       <header class="mt6-l mt7-l mb5">
-        <h1 class="f2 f1-ns fw5 ma0 lh-title">Tutorials</h1>
+        <h1 class="f2 f1-ns fw5 ma0 lh-title">Tagged: PHP</h1>
       </header>
-      <div class="f5 f4-ns measure">
-        {{ super() }}
-      </div>
-
       <div class="g3x-ns gg3 mv6">
-        {%- for tutorial in collections.tutorials -%}
+        {%- for tutorial in collections["php"] -%}
           <article class="flex flex-column ba b--transparent hover-b--smoke br2 pa4 grow">
             <a href="{{ tutorial.url }}" class="link eggplant hover-dragonfruit-light flex flex-column justify-between flex-grow-1">
               <h2 class="ma0 heading-level-4">{{ tutorial.data.title }}</h2>
@@ -37,3 +34,4 @@
     </section>
   </div>
 {% endblock %}
+    

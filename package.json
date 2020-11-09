@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "eleventy",
     "dev": "eleventy --serve",
-    "debug": "DEBUG=* eleventy --serve"
+    "debug": "DEBUG=* eleventy --serve",
+    "update:tags": "node fetch-contentful-tags.js"
   },
   "repository": {
     "type": "git",

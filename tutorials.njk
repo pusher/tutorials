@@ -10,6 +10,7 @@ layout: tutorial.njk
 eleventyComputed:
   title: "{{ tutorial.title }}"
   description: "{{ tutorial.description }}"
+  tagString: "{{ tutorial.tags | join(', ') }}"
 ---
 
   <article class="flex flex-wrap flex-nowrap-ns items-start justify-around relative mw9 center mt6">
@@ -22,13 +23,14 @@ eleventyComputed:
         <div class="dragonfruit measure bl bw2 b--dragonfruit pl5">
           <p class="ma0 fw6">{{ tutorial.prerequisite | widont | safe }}</p>
         </div>
+
         {{ tutorial.content | markdown | safe }}
       </div>
 
       <div class="f7 flex flex-wrap mv6">
         {% for tag in tutorial.tags %}
-          <a class="link mr3 mb3 bg-dragonfruit-wash br2 dragonfruit hover-dragonfruit-light fw6 pv1 ph2" href="/?tag={{tag.fields.name}}">
-            {{tag.fields.name}}
+          <a class="dib link mr3 mb3 bg-dragonfruit-wash br2 dragonfruit hover-dragonfruit-light fw6 pv1 ph2" href="/?tag={{ tag }}">
+            {{ tag }}
           </a>
         {% endfor %}
       </div>

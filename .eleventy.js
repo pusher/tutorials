@@ -1,6 +1,7 @@
 require("dotenv").config();
 const marked = require("marked");
 const pluginTOC = require("eleventy-plugin-toc");
+const { tags: CONTENTFUL_TAGS } = require("./tags.json");
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(pluginTOC, {
@@ -33,6 +34,25 @@ module.exports = (eleventyConfig) => {
       day: "numeric",
       year: "numeric",
       timeZone: "UTC",
+    });
+  });
+
+  eleventyConfig.addFilter("extractTags", (string) => {
+    const arrayOfNames = string.split(",").map((tag) => {
+      return tag.trim();
+    });
+    return arrayOfNames
+      .map((name) => CONTENTFUL_TAGS.filter((tag) => tag.name === name))
+      .reduce((a, b) => a.concat(b), []);
+  });
+
+  CONTENTFUL_TAGS.forEach((tag) => {
+    eleventyConfig.addCollection(tag.url, (collectionApi) => {
+      const filtered = collectionApi
+        .getFilteredByTag("tutorials")
+        .filter((post) => post.data.tutorial.tags.includes(tag.name));
+
+      return filtered;
     });
   });
 

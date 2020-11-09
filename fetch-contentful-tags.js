@@ -1,3 +1,26 @@
+require("dotenv").config();
+
+const fs = require("fs");
+const contentful = require("contentful");
+const client = contentful.createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+});
+
+// Contentful gives 100 entries at a time, we have more than that so have to get all of them
+
+const run = async () => {
+  const response = await client.getEntries({
+    content_type: "tag",
+  });
+
+  const tags = response.items.map((entries) => entries.fields);
+  fs.writeFileSync("tags.json", JSON.stringify({ tags }));
+
+  tags.forEach((tag) => {
+    fs.writeFileSync(
+      `tagged/${tag.url}.njk`,
+      `
 {% from "partials/channels-logo.njk" import channelsLogo %}
 {% from "partials/beams-logo.njk" import beamsLogo %}
 
@@ -9,14 +32,10 @@
     {% include "partials/home-nav.njk" %}
     <section class="pa5 mw9 center">
       <header class="mt6-l mt7-l mb5">
-        <h1 class="f2 f1-ns fw5 ma0 lh-title">Tutorials</h1>
+        <h1 class="f2 f1-ns fw5 ma0 lh-title">Tagged: ${tag.name}</h1>
       </header>
-      <div class="f5 f4-ns measure">
-        {{ super() }}
-      </div>
-
       <div class="g3x-ns gg3 mv6">
-        {%- for tutorial in collections.tutorials -%}
+        {%- for tutorial in collections["${tag.url}"] -%}
           <article class="flex flex-column ba b--transparent hover-b--smoke br2 pa4 grow">
             <a href="{{ tutorial.url }}" class="link eggplant hover-dragonfruit-light flex flex-column justify-between flex-grow-1">
               <h2 class="ma0 heading-level-4">{{ tutorial.data.title }}</h2>
@@ -37,3 +56,9 @@
     </section>
   </div>
 {% endblock %}
+    `
+    );
+  });
+};
+
+run();
