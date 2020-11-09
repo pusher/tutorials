@@ -19,10 +19,9 @@
         {%- for tutorial in collections.tutorials -%}
           <article class="flex flex-column ba b--transparent hover-b--smoke br2 pa4 grow">
             <a href="{{ tutorial.url }}" class="link eggplant hover-dragonfruit-light flex flex-column justify-between flex-grow-1">
-              <h2 class="ma0 heading-level-3">{{ tutorial.data.title }}</h2>
-              <p>{{ tutorial.data.description }}</p>
+              <h2 class="ma0 heading-level-4">{{ tutorial.data.title }}</h2>
 
-              <p class="dragonfruit fw6 mt-auto mb0">Learn more &raquo;</p>
+              <p class="dragonfruit hover-dragonfruit-light fw6 mb5">Follow tutorial &raquo;</p>
             </a>
           </article>
         {%- endfor -%}
