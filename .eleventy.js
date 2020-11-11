@@ -8,6 +8,11 @@ const markdownItAnchor = require("markdown-it-anchor");
 const { tags: CONTENTFUL_TAGS } = require("./tags.json");
 
 module.exports = (eleventyConfig) => {
+  eleventyConfig.addWatchTarget("./_tmp/style.min.css");
+  eleventyConfig.addPassthroughCopy({
+    "./_tmp/style.min.css": "./style.min.css",
+  });
+
   eleventyConfig.addPlugin(pluginTOC, {
     tags: ["h2", "h3"],
     ul: true,

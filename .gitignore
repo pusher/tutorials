@@ -28,3 +28,4 @@ node_modules/
 # Eleventy
 
 _site/
+_tmp/

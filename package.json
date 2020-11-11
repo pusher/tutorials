@@ -4,9 +4,8 @@
   "description": "Pusher Tutorials an 11ty generated static site",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eleventy",
-    "dev": "eleventy --serve",
+    "build": "NODE_ENV=production postcss css/style.pcss -o _site/style.min.css & ELEVENTY_PRODUCTION=true eleventy",
+    "dev": "postcss css/style.pcss -o _tmp/style.min.css -w --verbose & eleventy --serve",
     "debug": "DEBUG=* eleventy --serve",
     "update:tags": "node fetch-contentful-tags.js"
   },
@@ -22,11 +21,19 @@
   "homepage": "https://github.com/pusher/tutorials#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "contentful": "^7.14.8",
+    "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "eleventy-plugin-toc": "^1.1.0",
     "markdown-it-anchor": "^6.0.0",
     "markdown-it-prism": "^2.1.3",
-    "marked": "^1.2.2"
+    "marked": "^1.2.2",
+    "postcss": "^8.1.2",
+    "postcss-cli": "^8.1.0",
+    "postcss-easing-gradients": "^3.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^5.0.1",
+    "postcss-preset-env": "^6.7.0"
   }
 }
