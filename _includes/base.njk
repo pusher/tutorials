@@ -11,7 +11,7 @@
     <title>{{ title }}</title>
     <meta
       name="description"
-      content="{{ description }}"
+      content="{{ description or metadata.description }}"
     />
   </head>
   <body class="relative {{ bodyClasses }}">
