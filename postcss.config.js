@@ -9,9 +9,9 @@ module.exports = {
     postcssPresetEnv(),
     ...(process.env.NODE_ENV === "production"
       ? [
-          purgecss({
-            content: ["_site/**/*.html"],
-          }),
+          // purgecss({
+          //   content: ["_site/**/*.html"],
+          // }),
           require("cssnano"),
         ]
       : []),
