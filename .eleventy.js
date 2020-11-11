@@ -3,6 +3,7 @@ const marked = require("marked");
 const markdownIt = require("markdown-it");
 const pluginTOC = require("eleventy-plugin-toc");
 const prism = require("markdown-it-prism");
+const markdownItAnchor = require("markdown-it-anchor");
 
 const { tags: CONTENTFUL_TAGS } = require("./tags.json");
 
@@ -17,6 +18,7 @@ module.exports = (eleventyConfig) => {
     html: true,
     breaks: true,
     linkify: true,
+    typographer: true,
   });
 
   md.use(prism, {
@@ -43,6 +45,14 @@ module.exports = (eleventyConfig) => {
       Prism.languages["language-gradle"] = Prism.languages["xml"];
       Prism.languages["env"] = Prism.languages["markup"];
     },
+  });
+
+  md.use(markdownItAnchor, {
+    level: [2, 3, 4, 5],
+    permalink: true,
+    permalinkClass: "link bn",
+    permalinkSymbol: "∞",
+    permalinkBefore: true,
   });
 
   //
