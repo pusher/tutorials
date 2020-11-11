@@ -10,7 +10,7 @@ const { tags: CONTENTFUL_TAGS } = require("./tags.json");
 module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget("./_tmp/style.min.css");
   eleventyConfig.addPassthroughCopy({
-    "./_tmp/style.min.css": "./style.min.css",
+    "./_tmp/style.min.css": "./css/style.min.css",
   });
 
   eleventyConfig.addPlugin(pluginTOC, {
@@ -122,6 +122,7 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
 
   return {
     templateFormats: ["md", "html", "njk", "mjs"],
