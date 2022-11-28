@@ -1,0 +1,3 @@
+[submodule "go-pusher-chat-app-tutorial"]
+	path = go-pusher-chat-app-tutorial
+	url = git@github.com:pusher/go-pusher-chat-app-tutorial.git
