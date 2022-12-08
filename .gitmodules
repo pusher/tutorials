@@ -1,3 +1,6 @@
 [submodule "go-pusher-chat-app-tutorial"]
 	path = go-pusher-chat-app-tutorial
 	url = git@github.com:pusher/go-pusher-chat-app-tutorial.git
+[submodule "streaming-video-with-watchlist"]
+	path = streaming-video-with-watchlist
+	url = https://github.com/pusher/streaming-video-with-watchlist
